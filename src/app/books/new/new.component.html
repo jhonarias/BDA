@@ -1,3 +1,11 @@
-<p>
-  new works!
-</p>
+<section>
+  <form class="example-form" #addForm="ngForm">
+      <md-form-field class="example-full-width">
+          <input mdInput placeholder="Titulo" value="" [(ngModel)]="book.title" name="title" #name="ngModel" required>
+          <md-error>
+            Por favor ingresa el título
+          </md-error>
+      </md-form-field>
+      <button [disabled]="!addForm.valid" md-raised-button color="primary" (click)="onSaveClick()">Guardar</button>
+  </form>
+</section>

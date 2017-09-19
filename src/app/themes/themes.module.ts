@@ -1,7 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+/** Form angular**/
+import { FormsModule } from "@angular/forms";
+
+import { IndexComponent } from './index/index.component';
+import { NewComponent } from './new/new.component';
+import { ShowComponent } from './show/show.component';
+
 /* Import AnimationModule */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import {
   MdAutocompleteModule,
   MdButtonModule,
@@ -36,37 +45,10 @@ import {
   MdTooltipModule,  
   } from '@angular/material';
 
-import { AppComponent } from './app.component';
-/**** Import module books ****/
-import { BooksModule } from './books/books.module';
-/* import index component*/
-import { IndexComponent as componentBooksIndex } from './books/index/index.component';
-
-/* Import component menu */
-import { MenuComponent } from './menu/menu.component';
-
-import { CurrentOptionComponent } from './current-option/current-option.component'
-
-/* Import module themes*/
-import { ThemesModule } from './themes/themes.module';
-/* import index component*/
-import { IndexComponent as componentThemesIndex } from './themes/index/index.component';
-
-/* Rutas */
-import { RouterModule, Routes } from '@angular/router';
-const appRoutes: Routes = [
-  { path: 'books/index', component: componentBooksIndex },
-  { path: 'themes/index', component: componentThemesIndex },
-];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MenuComponent,
-    CurrentOptionComponent
-  ],
   imports: [
-    BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     MdAutocompleteModule,
     MdButtonModule,
@@ -99,11 +81,8 @@ const appRoutes: Routes = [
     MdTabsModule,
     MdToolbarModule,
     MdTooltipModule, /* Modules Material Design*/
-    BooksModule,
-    ThemesModule,
-    RouterModule.forRoot(appRoutes)  
+    FormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [IndexComponent, NewComponent, ShowComponent]
 })
-export class AppModule { }
+export class ThemesModule { }
