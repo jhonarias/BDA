@@ -54,6 +54,7 @@ import { IndexComponent as componentThemesIndex } from './themes/index/index.com
 
 /* Rutas */
 import { RouterModule, Routes } from '@angular/router';
+import { FooterComponent } from './footer/footer.component';
 const appRoutes: Routes = [
   { path: 'books/index', component: componentBooksIndex },
   { path: 'themes/index', component: componentThemesIndex },
@@ -63,7 +64,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     MenuComponent,
-    CurrentOptionComponent
+    CurrentOptionComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

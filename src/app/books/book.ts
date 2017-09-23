@@ -1,7 +1,7 @@
 export class Book {
     title:string;
     description:string;
-    author:boolean;
+    author:string;
     visibility:boolean;
     keywords:string;
     isbn:string;

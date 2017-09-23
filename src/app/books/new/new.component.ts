@@ -9,6 +9,17 @@ import { BookService } from "../book-service.service";
 })
 export class NewComponent implements OnInit {
 
+  visibilitys = [
+    {value: '0', viewValue: 'No visible'},
+    {value: '1', viewValue: 'Visible'},  
+  ];
+
+  types = [
+    {value: '0', viewValue: 'Interno'},
+    {value: '1', viewValue: 'Externo'},  
+  ];
+
+
   book:Book;
   
   constructor(private bookService:BookService) { }
