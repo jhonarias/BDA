@@ -15,8 +15,8 @@ export class NewComponent implements OnInit {
   ];
 
   types = [
-    {value: '0', viewValue: 'Interno'},
-    {value: '1', viewValue: 'Externo'},  
+    {value: '1', viewValue: 'Interno'},
+    {value: '0', viewValue: 'Externo'},  
   ];
 
 
@@ -28,13 +28,29 @@ export class NewComponent implements OnInit {
     this.book = new Book();
   }
 
+  fileChange(files: any){
+    console.log(files);
+    this.book.cover_page = files[0];
+  }
   onSaveClick() {
-    alert('Se guardo el cliente '+ this.book.title + ' satisfactoriamente');
-    this.bookService.bookList.push(this.book);    
+    console.log('El libro ', this.book);   
+    this.bookService.saveBook(this.book).then((book)=>{
+      console.log('respuesta', book);
+      if(book['status'] == 201 ) {
+        let respuesta = JSON.parse(book['_body']); 
+        this.bookService.bookList.push(respuesta);
+        alert('Se agrego correctmente el libro!');
+      } else {
+        alert(book['_body']);
+      }     
+    }).catch((err) => {
+      console.log(err);
+    })
   }
 
   onNewClick() {
     this.book = new Book();
   }
+ 
 
 }

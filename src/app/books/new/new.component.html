@@ -4,11 +4,11 @@
   </div>
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <form class="general-form" #addForm="ngForm">
+      <form class="general-form" #addForm="ngForm" (ngSubmit)="onSaveClick()">
         <div class="form-group">
           <md-form-field class="example-full-width">
-            <input mdInput placeholder="selecciona el título" value="" [(ngModel)]="book.title" name="title" #name="ngModel" required>
-            <md-error>
+            <input mdInput placeholder="selecciona el título" value="" [(ngModel)]="book.title" name="title" #title="ngModel" required>
+            <md-error *ngIf="!title.valid && !title.pristine">
               Selecciona el título
             </md-error>
           </md-form-field>
@@ -16,10 +16,10 @@
         <div class="form-group">
           <!--<textarea id="some-value" placeholder="selecciona la descripción" (change)="doTextareaValueChange($event)" [(ngModel)]="book.description" name="description" #name="ngModel" required>{{textareaValue}}</textarea>-->
           <md-form-field class="example-full-width">
-            <textarea mdInput placeholder="selecciona la descripción" value="" [(ngModel)]="book.description" name="description" #name="ngModel"
+            <textarea mdInput placeholder="selecciona la descripción" value="" [(ngModel)]="book.description" name="description" #description="ngModel"
               required rows="6">
             </textarea>
-            <md-error>
+            <md-error *ngIf="!description.valid && !description.pristine">
               Selecciona la descripción
             </md-error>
           </md-form-field>
@@ -27,28 +27,31 @@
 
         <div class="form-group">
           <md-form-field class="example-full-width">
-            <input mdInput placeholder="Selecciona el autor" value="" [(ngModel)]="book.author" name="author" #name="ngModel" required>
-            <md-error>
+            <input mdInput placeholder="Selecciona el autor" value="" [(ngModel)]="book.author" name="author" #author="ngModel" required>
+            <md-error *ngIf="!author.valid && !author.pristine">
               Selecciona el autor
             </md-error>
           </md-form-field>
         </div>
 
         <div class="form-group">
-          <md-select placeholder="Selecciona el estado" floatPlaceholder="Visible" [(ngModel)]="book.visibility" name="stratum" #name="ngModel"
+          <md-select placeholder="Selecciona el estado" floatPlaceholder="Visible" [(ngModel)]="book.visibility" name="visibility" #visibility="ngModel"
             required class="select-options">
             <md-option>Selecciona el estado</md-option>
             <md-option *ngFor="let status of visibilitys" [value]="status.value">
               {{ status.viewValue }}
             </md-option>
           </md-select>
+          <md-error *ngIf="!visibility.valid && !visibility.pristine">
+            Por favor ingresa la visibilidad
+          </md-error>
         </div>
 
         <div class="form-group">
           <md-form-field class="example-full-width">
-            <input mdInput placeholder="Selecciona las palabras claves" value="" [(ngModel)]="book.keywords" name="keywords" #name="ngModel"
+            <input mdInput placeholder="Selecciona las palabras claves" value="" [(ngModel)]="book.keywords" name="keywords" #keywords="ngModel"
               required>
-            <md-error>
+            <md-error *ngIf="!keywords.valid && !keywords.pristine">
               Selecciona las palabras claves
             </md-error>
           </md-form-field>
@@ -56,35 +59,38 @@
 
         <div class="form-group">
           <md-form-field class="example-full-width">
-            <input mdInput placeholder="Selecciona el isbn" value="" [(ngModel)]="book.isbn" name="isbn" #name="ngModel" required>
-            <md-error>
+            <input mdInput placeholder="Selecciona el isbn" value="" [(ngModel)]="book.isbn" name="isbn" #isbn="ngModel" required>
+            <md-error *ngIf="!isbn.valid && !isbn.pristine">
               Selecciona el isbn
             </md-error>
           </md-form-field>
         </div>
 
         <div class="form-group">
-          <md-select placeholder="Selecciona el tipo" floatPlaceholder="type" [(ngModel)]="book.type" name="type" #name="ngModel" required
+          <md-select placeholder="Selecciona el tipo" floatPlaceholder="type" [(ngModel)]="book.type_id" name="type_id" #type_id="ngModel" required
             class="select-options">
             <md-option>Selecciona el tipo</md-option>
             <md-option *ngFor="let type of types" [value]="type.value">
               {{ type.viewValue }}
             </md-option>
           </md-select>
+          <md-error *ngIf="!type_id.valid && !type_id.pristine">
+            Por favor ingresa el tipo del libro
+          </md-error>
+        </div>
+        <div class="form-group">          
+            <input type="file" #fileupload [(ngModel)]="book.cover_page" name="cover_page" (change)="fileChange(fileupload.files)"/>    
         </div>
         <div class="form-group">
-          <input type="file" #fileInput placeholder="Selecciona el archivo..."  name="cover_page"  required />
+          <input type="file" #fileupload placeholder="Selecciona el archivo..."  name="book_location" required />
         </div>
         <div class="form-group">
           <md-form-field class="example-full-width">
-            <input mdInput placeholder="Selecciona el link" value="" [(ngModel)]="book.link" name="link" #name="ngModel" required>
-            <md-error>
-              Selecciona el link
-            </md-error>
+            <input mdInput placeholder="Selecciona el link" value="" [(ngModel)]="book.link" name="link" #link="ngModel">           
           </md-form-field>
         </div>
         <div class="form-group">
-          <button [disabled]="!addForm.valid" md-raised-button color="primary" (click)="onSaveClick()">Guardar</button>
+          <button [disabled]="!addForm.valid" md-raised-button color="primary">Guardar</button>
         </div>
       </form>
     </div>

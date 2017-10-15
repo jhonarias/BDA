@@ -5,8 +5,9 @@ export class Book {
     visibility:boolean;
     keywords:string;
     isbn:string;
-    type:string;
-    cover_page:string;
+    type_id:string;
+    cover_page:File;
     link:string;
+    book_location:string;
     views:number;
 }
