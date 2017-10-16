@@ -51,13 +51,16 @@ import { CurrentOptionComponent } from './current-option/current-option.componen
 import { ThemesModule } from './themes/themes.module';
 /* import index component*/
 import { IndexComponent as componentThemesIndex } from './themes/index/index.component';
-
+/* Import show component */
+import { ShowComponent as componentBookShow } from './books/show/show.component';
 /* Rutas */
 import { RouterModule, Routes } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
+import { NgSelect2Module } from 'ng-select2';
 const appRoutes: Routes = [
   { path: 'books/index', component: componentBooksIndex },
   { path: 'themes/index', component: componentThemesIndex },
+  { path: 'books/show/:id', component: componentBookShow },
 ];
 
 @NgModule({
@@ -103,7 +106,8 @@ const appRoutes: Routes = [
     MdTooltipModule, /* Modules Material Design*/
     BooksModule,
     ThemesModule,
-    RouterModule.forRoot(appRoutes)  
+    NgSelect2Module,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent]

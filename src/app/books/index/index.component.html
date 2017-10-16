@@ -4,31 +4,31 @@
                 <table class="table table-bordered table-hover text-center" border="0">
                 <thead>
                     <th class="text-center">°</th>
-                    <th class="text-center">title</th>
-                    <th class="text-center">description</th>
-                    <th class="text-center">cover_page</th>
-                    <th class="text-center">author</th>  
-                    <th class="text-center">type</th>                  
+                    <th class="text-center">Title</th>
+                    <th class="text-center">Description</th>
+                    <th class="text-center">Cover_page</th>
+                    <th class="text-center">Author</th>  
+                    <th class="text-center">Keywords</th>                  
                 </thead>
                 <tbody>
                     <tr *ngFor="let book of bookService.bookList">
                     <td>
                         <md-checkbox></md-checkbox>
                     </td>
-                    <td>
-                        {{book.title}}
+                    <td>                                  
+                        <a class="" href="books/show/{{book.id}}">{{book.title}}</a>                        
                     </td>
                     <td>
                         {{book.description}}
                     </td>
                     <td> 
-                        <img src="http://biblioteca.confa.co:8181{{book.cover_page}}" class="img-reponsive" width="100" height="100">                                                  
+                        <img src="http://biblioteca.confa.co:8181{{book.cover_page}}" class="img-reponsive" width="100" height="100">
                     </td>
                     <td>
                         {{book.author}}
                     </td>
                     <td>
-                        {{ getTypeBook[book.type] }}
+                        {{ book.keywords }}
                     </td>
                     </tr>
                 </tbody>                

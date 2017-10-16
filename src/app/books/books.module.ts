@@ -12,6 +12,7 @@ import { ShowComponent } from './show/show.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
+import { NgSelect2Module } from 'ng-select2';
 
 import {
   MdAutocompleteModule,
@@ -86,7 +87,8 @@ import { BookService } from "./book-service.service";
     MdTooltipModule, /* Modules Material Design*/
     FormsModule,
     //HttpClientModule,
-    HttpModule
+    HttpModule,  
+    NgSelect2Module  
   ],
   declarations: [IndexComponent, NewComponent, ShowComponent],
   providers:[BookService]

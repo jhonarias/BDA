@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Book } from "../book";
 import { BookService } from "../book-service.service";
 
@@ -8,6 +8,8 @@ import { BookService } from "../book-service.service";
   styleUrls: ['./new.component.css']
 })
 export class NewComponent implements OnInit {
+
+ 
 
   visibilitys = [
     {value: '0', viewValue: 'No visible'},
@@ -21,11 +23,23 @@ export class NewComponent implements OnInit {
 
 
   book:Book;
+  @ViewChild('fileInput') fileInput;
   
   constructor(private bookService:BookService) { }
-
+  
   ngOnInit() {
     this.book = new Book();
+    this.activeSelect2();
+  }
+
+  activeSelect2() {
+    $("#keywords").select2({
+      placeholder: "palabras clave",
+      language: "es",
+      allowClear: true,
+      tags: true,
+      tokenSeparators: [',', ' '],
+    });
   }
 
   fileChange(files: any){
@@ -33,19 +47,29 @@ export class NewComponent implements OnInit {
     this.book.cover_page = files[0];
   }
   onSaveClick() {
-    console.log('El libro ', this.book);   
-    this.bookService.saveBook(this.book).then((book)=>{
-      console.log('respuesta', book);
-      if(book['status'] == 201 ) {
-        let respuesta = JSON.parse(book['_body']); 
-        this.bookService.bookList.push(respuesta);
-        alert('Se agrego correctmente el libro!');
-      } else {
-        alert(book['_body']);
-      }     
-    }).catch((err) => {
-      console.log(err);
-    })
+    let keywords = $("#keywords").val();
+    this.book.keywords = keywords.toString();
+    //console.log('keywords', this.book.keywords);
+    console.log('El libro ', this.book); 
+    
+    let fileBrowser = this.fileInput.nativeElement;
+    if (fileBrowser.files && fileBrowser.files[0]) {
+      const formData = new FormData();
+      formData.append("image", fileBrowser.files[0]);    
+
+      this.bookService.saveBook(this.book, formData).then((book) => {
+        console.log('respuesta', book);
+        if(book['status'] == 201 ) {
+          let respuesta = JSON.parse(book['_body']); 
+          this.bookService.bookList.push(respuesta);
+          alert('Se agrego correctmente el libro!');
+        } else {
+          alert(book['_body']);
+        }     
+      }).catch((err) => {
+        console.log(err);
+      })  
+    }    
   }
 
   onNewClick() {

@@ -4,7 +4,7 @@
   </div>
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <form class="general-form" #addForm="ngForm" (ngSubmit)="onSaveClick()">
+      <form class="general-form" #addForm="ngForm"  enctype="multipart/form-data">
         <div class="form-group">
           <md-form-field class="example-full-width">
             <input mdInput placeholder="selecciona el título" value="" [(ngModel)]="book.title" name="title" #title="ngModel" required>
@@ -47,14 +47,9 @@
           </md-error>
         </div>
 
-        <div class="form-group">
-          <md-form-field class="example-full-width">
-            <input mdInput placeholder="Selecciona las palabras claves" value="" [(ngModel)]="book.keywords" name="keywords" #keywords="ngModel"
-              required>
-            <md-error *ngIf="!keywords.valid && !keywords.pristine">
-              Selecciona las palabras claves
-            </md-error>
-          </md-form-field>
+        <div class="form-group">            
+            <select class="js-example-tokenizer form-control select2-hidden-accessible" [(ngModel)]="book.keywords" name="keywords" id="keywords" multiple="multiple" [ngModelOptions]="{standalone: true}">               
+            </select>                              
         </div>
 
         <div class="form-group">
@@ -66,6 +61,14 @@
           </md-form-field>
         </div>
 
+        
+        <div class="form-group">          
+          <input type="file" #fileInput placeholder="Upload file..." />
+            <!--<input type="file" #fileupload [(ngModel)]="book.cover_page" name="cover_page" (change)="fileChange(fileupload.files)"/>-->
+        </div>
+        <div class="form-group">
+          <input type="file" #fileupload placeholder="Selecciona el archivo..."  name="book_location" required />
+        </div>
         <div class="form-group">
           <md-select placeholder="Selecciona el tipo" floatPlaceholder="type" [(ngModel)]="book.type_id" name="type_id" #type_id="ngModel" required
             class="select-options">
@@ -78,19 +81,13 @@
             Por favor ingresa el tipo del libro
           </md-error>
         </div>
-        <div class="form-group">          
-            <input type="file" #fileupload [(ngModel)]="book.cover_page" name="cover_page" (change)="fileChange(fileupload.files)"/>    
-        </div>
-        <div class="form-group">
-          <input type="file" #fileupload placeholder="Selecciona el archivo..."  name="book_location" required />
-        </div>
         <div class="form-group">
           <md-form-field class="example-full-width">
             <input mdInput placeholder="Selecciona el link" value="" [(ngModel)]="book.link" name="link" #link="ngModel">           
-          </md-form-field>
+          </md-form-field>              
         </div>
         <div class="form-group">
-          <button [disabled]="!addForm.valid" md-raised-button color="primary">Guardar</button>
+          <button [disabled]="!addForm.valid" md-raised-button color="primary" (click)="onSaveClick()">Guardar</button>
         </div>
       </form>
     </div>

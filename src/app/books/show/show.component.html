@@ -1,3 +1,36 @@
-<p>
-  show works!
-</p>
+<div class="container-fluid" id="book">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="row">
+          <div class="col-md-12 text-center single-img">
+              <img src="http://biblioteca.confa.co:8181{{bookList.cover_page}}" class="img-reponsive">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 ">
+            <div class="single-item-info">
+                <div class="content">
+                    <h1>
+                      {{ bookList.title }}
+                    </h1>
+                    <h3>
+                        {{bookList.author}}
+                    </h3>
+                    <p>
+                        {{bookList.description}}
+                    </p>
+                    <div class="single-item__tags">
+                      <strong>Tags:</strong>
+                      {{ bookList.keywords }}
+                    </div>
+                </div> 
+            </div>                           
+          </div>
+        </div>        
+    </div>
+  </div>
+</div>
+
+
+
+
