@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import {HttpClientModule} from '@angular/common/http';
 import { NgSelect2Module } from 'ng-select2';
+import { TruncateModule } from 'ng2-truncate';
 
 import {
   MdAutocompleteModule,
@@ -88,7 +89,8 @@ import { BookService } from "./book-service.service";
     FormsModule,
     //HttpClientModule,
     HttpModule,  
-    NgSelect2Module  
+    NgSelect2Module,
+    TruncateModule,
   ],
   declarations: [IndexComponent, NewComponent, ShowComponent],
   providers:[BookService]

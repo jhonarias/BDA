@@ -73,3 +73,52 @@ body{
     right: 0;
     top: -12em;
 }
+.img-content{
+    height: 250px;
+    position: relative;
+}
+.img-content img{
+    height: 250px;
+    width: 100%;
+}
+.img-content .title-book{
+    position: absolute;
+    color: #fff;
+    top: 0;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    text-transform: capitalize;
+}
+.img-content:hover .descrip-book-hover {
+    display: block;    
+}
+.descrip-book-hover{
+    background-color:rgba(4,4,4,0.5);
+    position: absolute;
+    width: 100%;
+    display: none;
+    top: 0;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+}
+.descrip-book-hover h5, .descrip-book-hover h5{
+    text-transform: capitalize;
+}
+.descrip-book-hover h5{
+    margin: 25px 0;
+}
+.descrip-book-hover p{
+    line-height: normal;
+    font-weight: normal;
+    font-size: 13px;
+    margin: 15px 0 0;
+}
+
+.descrip-book-hover a{
+    text-decoration: underline;
+    cursor: pointer;
+    color: #fff;
+}

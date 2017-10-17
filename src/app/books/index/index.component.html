@@ -1,6 +1,22 @@
-<div class="container">
+<div class="container">    
     <section class="" style="margin-top: 20px;">
-            <form class="example-form">
+        <div class="row" id="grid-book">
+            <div class="col-sm-3" *ngFor="let book of bookService.bookList">
+                <div class="img-content">
+                    <img src="http://biblioteca.confa.co:8181{{book.cover_page}}" alt="">
+                    <div class="title-book text-center">
+                        <h4>{{book.title}}</h4>                        
+                    </div>
+                    <div class="descrip-book-hover">
+                        <h5>{{book.title}}</h5>
+                        <h5>{{book.author}}</h5>                          
+                        <p>{{ book.description | truncate : 120 : "…" }}</p>
+                        <a class="" href="books/show/{{book.id}}">Ver libro</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!--<form class="example-form">
                 <table class="table table-bordered table-hover text-center" border="0">
                 <thead>
                     <th class="text-center">°</th>
@@ -33,9 +49,8 @@
                     </tr>
                 </tbody>                
                 </table>
-            </form>
+            </form>-->
             </section>
-    <!--<app-show></app-show>-->
     <app-new></app-new>
 </div>
 

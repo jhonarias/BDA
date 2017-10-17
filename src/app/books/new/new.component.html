@@ -4,7 +4,7 @@
   </div>
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <form class="general-form" #addForm="ngForm"  enctype="multipart/form-data">
+      <form class="general-form" #addForm="ngForm"  enctype="multipart/form-data" id="formfile">
         <div class="form-group">
           <md-form-field class="example-full-width">
             <input mdInput placeholder="selecciona el título" value="" [(ngModel)]="book.title" name="title" #title="ngModel" required>
@@ -63,8 +63,8 @@
 
         
         <div class="form-group">          
-          <input type="file" #fileInput placeholder="Upload file..." />
-            <!--<input type="file" #fileupload [(ngModel)]="book.cover_page" name="cover_page" (change)="fileChange(fileupload.files)"/>-->
+          
+        <input type="file" id="cover_page" name="cover_page" class="btn btn-success"/>
         </div>
         <div class="form-group">
           <input type="file" #fileupload placeholder="Selecciona el archivo..."  name="book_location" required />

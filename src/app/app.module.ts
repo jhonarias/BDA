@@ -57,6 +57,7 @@ import { ShowComponent as componentBookShow } from './books/show/show.component'
 import { RouterModule, Routes } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { NgSelect2Module } from 'ng-select2';
+import { TruncateModule } from 'ng2-truncate';
 const appRoutes: Routes = [
   { path: 'books/index', component: componentBooksIndex },
   { path: 'themes/index', component: componentThemesIndex },
@@ -107,6 +108,7 @@ const appRoutes: Routes = [
     BooksModule,
     ThemesModule,
     NgSelect2Module,
+    TruncateModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [],
