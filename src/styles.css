@@ -4,7 +4,7 @@
 @import "~font-awesome/css/font-awesome.css";
 
 body{
-    padding-top: 5rem;
+    padding-top: 3.7rem;
 }
 
 .footer {    
@@ -25,7 +25,7 @@ body{
 #book .single-img img{
     width: 100%;
     height: 600px;
-    object-fit: contain;
+    /*object-fit: cover;*/
 }
 
 #book .content{
@@ -73,15 +73,16 @@ body{
     right: 0;
     top: -12em;
 }
-.img-content{
+#grid-book .img-content{
     height: 250px;
     position: relative;
+    margin-bottom: 15px;
 }
-.img-content img{
+#grid-book .img-content img{
     height: 250px;
     width: 100%;
 }
-.img-content .title-book{
+#grid-book .img-content .title-book{
     position: absolute;
     color: #fff;
     top: 0;
@@ -89,11 +90,13 @@ body{
     margin: 0 auto;
     width: 100%;
     text-transform: capitalize;
+    margin: 20px 0;
+    padding: 0 10px;
 }
-.img-content:hover .descrip-book-hover {
+#grid-book .img-content:hover .descrip-book-hover {
     display: block;    
 }
-.descrip-book-hover{
+#grid-book .descrip-book-hover{
     background-color:rgba(4,4,4,0.5);
     position: absolute;
     width: 100%;
@@ -104,21 +107,32 @@ body{
     color: #fff;
     padding: 10px;
 }
-.descrip-book-hover h5, .descrip-book-hover h5{
+#grid-book .descrip-book-hover h5, .descrip-book-hover h5{
     text-transform: capitalize;
 }
-.descrip-book-hover h5{
-    margin: 25px 0;
+#grid-book .descrip-book-hover h5{
+    margin: 10px 0 25px;
 }
-.descrip-book-hover p{
+#grid-book .descrip-book-hover p{
     line-height: normal;
     font-weight: normal;
     font-size: 13px;
     margin: 15px 0 0;
 }
 
-.descrip-book-hover a{
+#grid-book .descrip-book-hover a{
     text-decoration: underline;
     cursor: pointer;
     color: #fff;
+}
+#grid-book .descrip-book-hover i{
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+#library {
+    background: url('assets/img/BackBiblioteca.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 50px 0 40px;
 }

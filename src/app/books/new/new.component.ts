@@ -35,6 +35,7 @@ export class NewComponent implements OnInit {
       allowClear: true,
       tags: true,
       tokenSeparators: [',', ' '],
+
     });
   }
 
@@ -44,20 +45,26 @@ export class NewComponent implements OnInit {
   }
   onSaveClick() {
     let keywords = $("#keywords").val();
-    this.book.keywords = keywords.toString();
-    //console.log('El libro ', this.book); 
+    this.book.keywords = keywords.toString();   
     let files = this.elem.nativeElement.querySelector('#cover_page').files;
-    let formData = new FormData(document.forms.namedItem("formfile"));
-    let file = files[0];
-    console.log('file ', file);
-    console.log('file name ', file.name);
+    let formData = new FormData();
+    let file = files[0];   
     formData.append('cover_page', file, file.name);
-    //formData.append('file', file);
+    formData.append('title', this.book.title);
+    formData.append('description', this.book.description);
+    formData.append('keywords', this.book.keywords);
+    formData.append('author', this.book.author);
+    formData.append('type_id', this.book.type_id);
+    formData.append('link', this.book.link);
+    formData.append('isbn', this.book.isbn);
+    formData.append('visibility', this.book.visibility.toString());
+
     this.bookService.saveBook(this.book, formData).then((book) => {
       console.log('respuesta', book);
       if(book['status'] == 201 ) {
         let respuesta = JSON.parse(book['_body']); 
         this.bookService.bookList.push(respuesta);
+        this.book = new Book();
         alert('Se agrego correctmente el libro!');
       } else {
         alert(book['_body']);

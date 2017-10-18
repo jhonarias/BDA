@@ -2,94 +2,93 @@
   <div class="title-general">
     <h1>Crear libro</h1>
   </div>
-  <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <form class="general-form" #addForm="ngForm"  enctype="multipart/form-data" id="formfile">
-        <div class="form-group">
-          <md-form-field class="example-full-width">
-            <input mdInput placeholder="selecciona el título" value="" [(ngModel)]="book.title" name="title" #title="ngModel" required>
-            <md-error *ngIf="!title.valid && !title.pristine">
-              Selecciona el título
-            </md-error>
-          </md-form-field>
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <form class="general-form" #addForm="ngForm"  enctype="multipart/form-data" id="formfile" (ngSubmit)="onSaveClick()">
+              <div class="form-group">
+                <md-form-field class="example-full-width">
+                  <input mdInput placeholder="selecciona el título" value="" [(ngModel)]="book.title" name="title" #title="ngModel" required>
+                  <md-error *ngIf="!title.valid && !title.pristine">
+                    Selecciona el título
+                  </md-error>
+                </md-form-field>
+              </div>
+              <div class="form-group">                
+                <md-form-field class="example-full-width">
+                  <textarea mdInput placeholder="selecciona la descripción" value="" [(ngModel)]="book.description" name="description" #description="ngModel"
+                    required rows="6">
+                  </textarea>
+                  <md-error *ngIf="!description.valid && !description.pristine">
+                    Selecciona la descripción
+                  </md-error>
+                </md-form-field>
+              </div>
+      
+              <div class="form-group">
+                <md-form-field class="example-full-width">
+                  <input mdInput placeholder="Selecciona el autor" value="" [(ngModel)]="book.author" name="author" #author="ngModel" required>
+                  <md-error *ngIf="!author.valid && !author.pristine">
+                    Selecciona el autor
+                  </md-error>
+                </md-form-field>
+              </div>
+      
+              <div class="form-group">
+                <md-select placeholder="Selecciona el estado" floatPlaceholder="Visible" [(ngModel)]="book.visibility" name="visibility" #visibility="ngModel"
+                  required class="select-options">
+                  <md-option>Selecciona el estado</md-option>
+                  <md-option *ngFor="let status of visibilitys" [value]="status.value">
+                    {{ status.viewValue }}
+                  </md-option>
+                </md-select>
+                <md-error *ngIf="!visibility.valid && !visibility.pristine">
+                  Por favor ingresa la visibilidad
+                </md-error>
+              </div>
+      
+              <div class="form-group">            
+                  <select class="js-example-tokenizer form-control select2-hidden-accessible" [(ngModel)]="book.keywords" name="keywords" id="keywords" multiple="multiple" [ngModelOptions]="{standalone: true}">               
+                  </select>                              
+              </div>
+      
+              <div class="form-group">
+                <md-form-field class="example-full-width">
+                  <input mdInput placeholder="Selecciona el isbn" value="" [(ngModel)]="book.isbn" name="isbn" #isbn="ngModel" required>
+                  <md-error *ngIf="!isbn.valid && !isbn.pristine">
+                    Selecciona el isbn
+                  </md-error>
+                </md-form-field>
+              </div>              
+              <div class="form-group">                          
+              <input type="file" id="cover_page" name="cover_page" class="btn btn-success" required/>
+              </div>
+              <div class="form-group">
+                <input type="file" #fileupload placeholder="Selecciona el archivo..." name="book_location" required />
+              </div>
+              <div class="form-group">
+                <md-select placeholder="Selecciona el tipo" floatPlaceholder="type" [(ngModel)]="book.type_id" name="type_id" #type_id="ngModel" required
+                  class="select-options">
+                  <md-option>Selecciona el tipo</md-option>
+                  <md-option *ngFor="let type of types" [value]="type.value">
+                    {{ type.viewValue }}
+                  </md-option>
+                </md-select>
+                <md-error *ngIf="!type_id.valid && !type_id.pristine">
+                  Por favor ingresa el tipo del libro
+                </md-error>
+              </div>
+              <div class="form-group" *ngIf="book.type_id == '0'">
+                <md-form-field class="example-full-width">
+                  <input mdInput placeholder="Selecciona el link" value="" [(ngModel)]="book.link" name="link" #link="ngModel">           
+                </md-form-field>              
+              </div>
+              <div class="form-group">
+                <button [disabled]="!addForm.valid" md-raised-button color="primary" >Guardar</button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div class="form-group">
-          <!--<textarea id="some-value" placeholder="selecciona la descripción" (change)="doTextareaValueChange($event)" [(ngModel)]="book.description" name="description" #name="ngModel" required>{{textareaValue}}</textarea>-->
-          <md-form-field class="example-full-width">
-            <textarea mdInput placeholder="selecciona la descripción" value="" [(ngModel)]="book.description" name="description" #description="ngModel"
-              required rows="6">
-            </textarea>
-            <md-error *ngIf="!description.valid && !description.pristine">
-              Selecciona la descripción
-            </md-error>
-          </md-form-field>
-        </div>
-
-        <div class="form-group">
-          <md-form-field class="example-full-width">
-            <input mdInput placeholder="Selecciona el autor" value="" [(ngModel)]="book.author" name="author" #author="ngModel" required>
-            <md-error *ngIf="!author.valid && !author.pristine">
-              Selecciona el autor
-            </md-error>
-          </md-form-field>
-        </div>
-
-        <div class="form-group">
-          <md-select placeholder="Selecciona el estado" floatPlaceholder="Visible" [(ngModel)]="book.visibility" name="visibility" #visibility="ngModel"
-            required class="select-options">
-            <md-option>Selecciona el estado</md-option>
-            <md-option *ngFor="let status of visibilitys" [value]="status.value">
-              {{ status.viewValue }}
-            </md-option>
-          </md-select>
-          <md-error *ngIf="!visibility.valid && !visibility.pristine">
-            Por favor ingresa la visibilidad
-          </md-error>
-        </div>
-
-        <div class="form-group">            
-            <select class="js-example-tokenizer form-control select2-hidden-accessible" [(ngModel)]="book.keywords" name="keywords" id="keywords" multiple="multiple" [ngModelOptions]="{standalone: true}">               
-            </select>                              
-        </div>
-
-        <div class="form-group">
-          <md-form-field class="example-full-width">
-            <input mdInput placeholder="Selecciona el isbn" value="" [(ngModel)]="book.isbn" name="isbn" #isbn="ngModel" required>
-            <md-error *ngIf="!isbn.valid && !isbn.pristine">
-              Selecciona el isbn
-            </md-error>
-          </md-form-field>
-        </div>
-
-        
-        <div class="form-group">          
-          
-        <input type="file" id="cover_page" name="cover_page" class="btn btn-success"/>
-        </div>
-        <div class="form-group">
-          <input type="file" #fileupload placeholder="Selecciona el archivo..."  name="book_location" required />
-        </div>
-        <div class="form-group">
-          <md-select placeholder="Selecciona el tipo" floatPlaceholder="type" [(ngModel)]="book.type_id" name="type_id" #type_id="ngModel" required
-            class="select-options">
-            <md-option>Selecciona el tipo</md-option>
-            <md-option *ngFor="let type of types" [value]="type.value">
-              {{ type.viewValue }}
-            </md-option>
-          </md-select>
-          <md-error *ngIf="!type_id.valid && !type_id.pristine">
-            Por favor ingresa el tipo del libro
-          </md-error>
-        </div>
-        <div class="form-group">
-          <md-form-field class="example-full-width">
-            <input mdInput placeholder="Selecciona el link" value="" [(ngModel)]="book.link" name="link" #link="ngModel">           
-          </md-form-field>              
-        </div>
-        <div class="form-group">
-          <button [disabled]="!addForm.valid" md-raised-button color="primary" (click)="onSaveClick()">Guardar</button>
-        </div>
-      </form>
-    </div>
   </div>
+  
 </section>

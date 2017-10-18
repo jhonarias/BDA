@@ -10,6 +10,7 @@ import { ShowComponent } from './show/show.component';
 
 /* Import AnimationModule */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
 
 import {
   MdAutocompleteModule,
@@ -45,7 +46,7 @@ import {
   MdTooltipModule,  
   } from '@angular/material';
 
-
+  import { ThemeService } from "./theme-service.service";
 @NgModule({
   imports: [
     CommonModule,
@@ -81,8 +82,10 @@ import {
     MdTabsModule,
     MdToolbarModule,
     MdTooltipModule, /* Modules Material Design*/
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
-  declarations: [IndexComponent, NewComponent, ShowComponent]
+  declarations: [IndexComponent, NewComponent, ShowComponent],
+  providers:[ThemeService]
 })
 export class ThemesModule { }
