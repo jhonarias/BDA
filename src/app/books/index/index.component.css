@@ -1,0 +1,76 @@
+#grid-book .img-content{
+    height: 250px;
+    position: relative;
+    margin-bottom: 15px;
+}
+#grid-book .img-content img{
+    height: 250px;
+    width: 100%;
+}
+#grid-book .img-content .title-book{
+    position: absolute;
+    color: #fff;
+    top: 0;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    text-transform: capitalize;
+    margin: 20px 0;
+    padding: 0 10px;
+}
+#grid-book .img-content:hover .descrip-book-hover {
+    display: block;    
+}
+#grid-book .descrip-book-hover{
+    background-color:rgba(4,4,4,0.5);
+    position: absolute;
+    width: 100%;
+    display: none;
+    top: 0;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+}
+#grid-book .descrip-book-hover h5, .descrip-book-hover h5{
+    text-transform: capitalize;
+}
+#grid-book .descrip-book-hover h5{
+    margin: 10px 0 25px;
+}
+#grid-book .descrip-book-hover p{
+    line-height: normal;
+    font-weight: normal;
+    font-size: 13px;
+    margin: 15px 0 0;
+}
+
+#grid-book .descrip-book-hover a{
+    text-decoration: underline;
+    cursor: pointer;
+    color: #fff;
+}
+#grid-book .descrip-book-hover i{
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+#detailModalBook .modal-body, #detailModalBook .modal-header {
+    padding: 0;
+}
+#detailModalBook .modal-header button  {
+    position: absolute;
+    color: #fff;
+    right: 5px;
+    top: -5px;
+    z-index: 9;
+    font-size: 45px;
+    opacity: 1;
+}
+
+@media (min-width: 768px){
+    #detailModalBook .modal-dialog{
+      max-width: 600px!important;
+      width: auto !important;
+    }
+}

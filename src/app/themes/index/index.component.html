@@ -1,2 +1,36 @@
-<app-show></app-show>
+<section class="" id="theme">
+    <div class="container">
+        <div class="table-responsive">
+    <form class="example-form">
+            <table class="table table-bordered table-hover text-center" border="0">
+                <thead>
+                <th class="text-center">°</th>                
+                <th class="text-center">Name</th>
+                <th class="text-center">Description</th>
+                <th class="text-center">State</th> 
+                </thead>
+                <tbody>
+                <tr *ngFor="let theme of themeService.themeList; let i = index">
+                    <td>
+                    <md-checkbox></md-checkbox>
+                    </td>
+                    <td>                        
+                    {{theme.name}}
+                    </td>
+                    <td>
+                        {{theme.description}}
+                    </td>
+                    <td> 
+                        <button md-raised-button color="{{getColor[theme.state]}}" (click)="changeStatus(theme.id, i)">{{getStatus[theme.state]}} </button>                                      
+                    </td>                    
+                </tr>
+                </tbody>                
+            </table>
+            </form>
+        </div>
+    </div>
+</section>    
+
+
+
 <app-new></app-new>

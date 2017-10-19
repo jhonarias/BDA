@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Book } from "../book";
 import { BookService } from "../book-service.service";
+import { ThemeService } from "../../themes/theme-service.service";
 
 @Component({
   selector: 'app-new',
@@ -21,11 +22,12 @@ export class NewComponent implements OnInit {
 
   book:Book;
 
-  constructor(private bookService:BookService, private elem: ElementRef) { }
+  constructor(private bookService:BookService, private elem: ElementRef, private themeService:ThemeService) { }
   
   ngOnInit() {
     this.book = new Book();
     this.activeSelect2();
+    this.getThemesBooks();
   }
 
   activeSelect2() {
@@ -36,7 +38,7 @@ export class NewComponent implements OnInit {
       tags: true,
       tokenSeparators: [',', ' '],
 
-    });
+    });    
   }
 
   fileChange(files: any){
@@ -58,24 +60,35 @@ export class NewComponent implements OnInit {
     formData.append('link', this.book.link);
     formData.append('isbn', this.book.isbn);
     formData.append('visibility', this.book.visibility.toString());
+    formData.append('themes', this.book.theme_id)
 
-    this.bookService.saveBook(this.book, formData).then((book) => {
+    this.bookService.saveBook(formData).then((book) => {
       console.log('respuesta', book);
       if(book['status'] == 201 ) {
         let respuesta = JSON.parse(book['_body']); 
         this.bookService.bookList.push(respuesta);
         this.book = new Book();
+        $("#keywords").val('');$('#cover_page').val();
         alert('Se agrego correctmente el libro!');
       } else {
         alert(book['_body']);
       }     
     }).catch((err) => {
       console.log(err);
-    })      
+    })   
   }
 
   onNewClick() {
     this.book = new Book();
+  }
+
+  getThemesBooks() {
+    this.themeService.loadThemesIsActive().then((theme) => {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+      let respuesta = JSON.parse(theme['_body']);           
+      this.themeService.themeList = respuesta;      
+    }).catch((err) => {
+      console.log(err);
+    }); 
   }
  
 

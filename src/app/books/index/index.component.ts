@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from "../book-service.service";
+import { Book } from "../book";
 
 @Component({
   selector: 'app-index',
@@ -8,12 +9,13 @@ import { BookService } from "../book-service.service";
 })
 export class IndexComponent implements OnInit {
   books: string[];
+  bookDetail:Array<Book>;
   constructor(private bookService:BookService) { }
 
   getTypeBook = ['Externo', 'Libre'];
 
   ngOnInit() {  
-    this.getBooks();
+    this.getBooks();    
   }
 
   getBooks() {
@@ -23,10 +25,18 @@ export class IndexComponent implements OnInit {
     }).catch((err) => {
       console.log(err);
     });                              
+  }  
+  detailBook(book_id) {       
+    this.bookService.showBook(book_id).then((book) => {  
+      if(book['status'] == 404 ) {
+        alert(book['_body']);
+        location.href = '/books/index';
+      } else {
+        let respuesta = JSON.parse(book['_body']);            
+        this.bookDetail = respuesta;        
+      }     
+    }).catch((err) => {
+      console.log(err);
+    });
   }
-
-  getThemesBooks() {
-    
-  }
-
 }

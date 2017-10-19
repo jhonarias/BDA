@@ -24,7 +24,7 @@ body{
 
 #book .single-img img{
     width: 100%;
-    height: 600px;
+    height: 500px;
     /*object-fit: cover;*/
 }
 
@@ -73,64 +73,8 @@ body{
     right: 0;
     top: -12em;
 }
-#grid-book .img-content{
-    height: 250px;
-    position: relative;
-    margin-bottom: 15px;
-}
-#grid-book .img-content img{
-    height: 250px;
-    width: 100%;
-}
-#grid-book .img-content .title-book{
-    position: absolute;
-    color: #fff;
-    top: 0;
-    text-align: center;
-    margin: 0 auto;
-    width: 100%;
-    text-transform: capitalize;
-    margin: 20px 0;
-    padding: 0 10px;
-}
-#grid-book .img-content:hover .descrip-book-hover {
-    display: block;    
-}
-#grid-book .descrip-book-hover{
-    background-color:rgba(4,4,4,0.5);
-    position: absolute;
-    width: 100%;
-    display: none;
-    top: 0;
-    height: 100%;
-    text-align: center;
-    color: #fff;
-    padding: 10px;
-}
-#grid-book .descrip-book-hover h5, .descrip-book-hover h5{
-    text-transform: capitalize;
-}
-#grid-book .descrip-book-hover h5{
-    margin: 10px 0 25px;
-}
-#grid-book .descrip-book-hover p{
-    line-height: normal;
-    font-weight: normal;
-    font-size: 13px;
-    margin: 15px 0 0;
-}
 
-#grid-book .descrip-book-hover a{
-    text-decoration: underline;
-    cursor: pointer;
-    color: #fff;
-}
-#grid-book .descrip-book-hover i{
-    vertical-align: middle;
-    font-size: 20px;
-}
-
-#library {
+#library, #theme {
     background: url('assets/img/BackBiblioteca.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;

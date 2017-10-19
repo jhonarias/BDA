@@ -10,7 +10,7 @@ export class BookService {
   headers: Headers;
   headersPost: Headers;
   options: RequestOptions;
-  urlService = 'http://bdc.app/';
+  urlService = 'http://bdc.app';
 
   constructor(public http: Http) {}
 
@@ -25,7 +25,7 @@ export class BookService {
     });
     //biblioteca.confa.co:8181
     return new Promise ((resolve, reject) => {
-      this.http.get(this.urlService+'api/book', optionspost)
+      this.http.get(this.urlService+'/api/book', optionspost)
       .subscribe(res =>{
         resolve(res);
       },(err) => {
@@ -34,9 +34,9 @@ export class BookService {
     });
   }
 
-  saveBook(newBook: Book, formData: any) {   
+  saveBook(formData: any) {   
     console.log("formdata", formData); 
-    let body = 'title='+newBook.title+'&description='+newBook.description+'&author='+newBook.author+'&visibility='+newBook.visibility+'&keywords='+newBook.keywords+'&isbn='+newBook.isbn+'&type_id='+newBook.type_id+'&cover_page='+formData;
+    //let body = 'title='+newBook.title+'&description='+newBook.description+'&author='+newBook.author+'&visibility='+newBook.visibility+'&keywords='+newBook.keywords+'&isbn='+newBook.isbn+'&type_id='+newBook.type_id+'&cover_page='+formData;
     this.headersPost = new Headers({     
       "Cache-Control": "no-cache",      
       "Pragma": "no-cache"
@@ -47,7 +47,7 @@ export class BookService {
     });
 
     return new Promise ((resolve, reject) => {
-      this.http.post(this.urlService+'api/book', formData, optionspost)
+      this.http.post(this.urlService+'/api/book', formData, optionspost)
       .subscribe(res =>{
         resolve(res);
       },(err) => {
@@ -67,7 +67,7 @@ export class BookService {
     });
 
     return new Promise ((resolve, reject) => {
-      this.http.get(this.urlService+'api/book/'+id, optionspost)
+      this.http.get(this.urlService+'/api/book/'+id, optionspost)
       .subscribe(res =>{
         resolve(res);
       },(err) => {

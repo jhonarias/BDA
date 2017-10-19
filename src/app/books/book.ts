@@ -10,4 +10,5 @@ export class Book {
     link:string;
     book_location:string;
     views:number;
+    theme_id:string;
 }

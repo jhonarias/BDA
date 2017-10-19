@@ -1,3 +1,46 @@
-<p>
-  new works!
-</p>
+<section class="text-center">
+  <div class="title-general">
+    <h1>Crear tema</h1>
+  </div>
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <form class="general-form" #addForm="ngForm" (ngSubmit)="onSaveClick()">
+              <div class="form-group">
+                <md-form-field class="example-full-width">
+                  <input mdInput placeholder="selecciona el nombre" value="" [(ngModel)]="theme.name" name="name" #name="ngModel" required>
+                  <md-error *ngIf="!name.valid && !name.pristine">
+                    Selecciona el nombre
+                  </md-error>
+                </md-form-field>
+              </div>
+              <div class="form-group">                
+                <md-form-field class="example-full-width">
+                  <textarea mdInput placeholder="selecciona la descripción" value="" [(ngModel)]="theme.description" name="description" #description="ngModel"
+                    required rows="6">
+                  </textarea>
+                  <md-error *ngIf="!description.valid && !description.pristine">
+                    Selecciona la descripción
+                  </md-error>
+                </md-form-field>
+              </div>      
+              <div class="form-group">
+                <md-select placeholder="Selecciona el estado" floatPlaceholder="Estado" [(ngModel)]="theme.status" name="status" #state="ngModel"
+                  required class="select-options">                  
+                  <md-option *ngFor="let state of status" [value]="state.value">
+                    {{ state.viewValue }}
+                  </md-option>
+                </md-select>
+                <md-error *ngIf="!state.valid && !state.pristine">
+                  Por favor ingresa el estado
+                </md-error>
+              </div>
+              <div class="form-group">
+                <button [disabled]="!addForm.valid" md-raised-button color="primary" >Guardar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+  </div>
+  
+</section>
