@@ -33,7 +33,23 @@ export class IndexComponent implements OnInit {
         location.href = '/books/index';
       } else {
         let respuesta = JSON.parse(book['_body']);            
-        this.bookDetail = respuesta;        
+        this.bookDetail = respuesta;
+        this.themesByBook(book_id); 
+      }     
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
+
+  themes_By_Book: string;
+  themesByBook(book_id) {
+    this.bookService.themesByBook(book_id).then((book) => {  
+      if(book['status'] == 404 ) {
+        alert(book['_body']);
+        location.href = '/books/index';
+      } else {
+        let respuesta = JSON.parse(book['_body']);            
+        this.themes_By_Book = respuesta;        
       }     
     }).catch((err) => {
       console.log(err);

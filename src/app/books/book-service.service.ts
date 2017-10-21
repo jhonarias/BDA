@@ -76,4 +76,24 @@ export class BookService {
     });
   }
 
+  themesByBook(id){
+    this.headersPost = new Headers({
+      'Content-type': 'application/x-www-form-urlencoded',
+      'Access-Control-Allow-Origin': '*',
+    });
+
+    let optionspost = new RequestOptions({
+      headers: this.headersPost
+    });
+
+    return new Promise ((resolve, reject) => {
+      this.http.get(this.urlService+'/api/themesByBook/'+id, optionspost)
+      .subscribe(res =>{
+        resolve(res);
+      },(err) => {
+        resolve(err);                                             
+      });
+    });
+  }
+
 }

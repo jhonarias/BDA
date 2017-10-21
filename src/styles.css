@@ -46,6 +46,12 @@ body{
     text-transform: capitalize;
 }
 
+#book .content h5{
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    margin-bottom: 20px;
+}
+
 #book .content p{
     font-size: 1.2rem;
     line-height: 1.4rem;

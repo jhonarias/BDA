@@ -71,11 +71,13 @@
                   </md-error>
                 </md-form-field>
               </div>              
-              <div class="form-group">                          
+              <div class="form-group">
+              <label for="cover_page">Portada*</label>                      
               <input type="file" id="cover_page" name="cover_page" class="btn btn-success" required/>
               </div>
-              <div class="form-group">
-                <input type="file" #fileupload placeholder="Selecciona el archivo..." name="book_location" required />
+              <div class="form-group" *ngIf="book.type_id == '1'">
+                <label for="cover_page">Pdf*</label>
+                <input type="file" id="book_location" name="book_location" required />
               </div>
               <div class="form-group">
                 <md-select placeholder="Selecciona el tipo" floatPlaceholder="type" [(ngModel)]="book.type_id" name="type_id" #type_id="ngModel" required
@@ -89,9 +91,9 @@
                   Por favor ingresa el tipo del libro
                 </md-error>
               </div>
-              <div class="form-group" *ngIf="book.type_id == '0'">
+              <div class="form-group" *ngIf="book.type_id == '2'">
                 <md-form-field class="example-full-width">
-                  <input mdInput placeholder="Selecciona el link" value="" [(ngModel)]="book.link" name="link" #link="ngModel">           
+                  <input mdInput placeholder="Selecciona el link" value="" [(ngModel)]="book.link" name="link" #link="ngModel" required>           
                 </md-form-field>              
               </div>
               <div class="form-group">

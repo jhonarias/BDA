@@ -1,7 +1,7 @@
 <section class="" id="library">
     <div class="container">  
         <div class="row" id="grid-book">
-            <div class="col-sm-3" *ngFor="let book of bookService.bookList">
+            <div class="col-sm-6 col-md-3 col-xs-6" *ngFor="let book of bookService.bookList">
                 <div class="img-content">
                     <img src="{{bookService.urlService}}{{book.cover_page}}" alt="">
                     <div class="title-book text-center">
@@ -43,6 +43,10 @@
                                                 <h3>
                                                     {{bookDetail.author}}
                                                 </h3>
+                                                <h5 class="single-item__themes">
+                                                    <strong>Temas:</strong>
+                                                    {{themes_By_Book}}
+                                                </h5>
                                                 <p>
                                                     {{bookDetail.description}}
                                                 </p>
@@ -50,6 +54,11 @@
                                                 <strong>Tags:</strong>
                                                 {{ bookDetail.keywords }}
                                                 </div>
+                                                <div class="book-reader">
+                                                    <a href="{{bookService.urlService}}{{bookDetail.book_location}}" download style="color: #fff;" title="Descargar"><i class="material-icons" style="vertical-align: bottom;">backup</i></a>                                                    
+                                                    <a *ngIf="bookDetail.type == '1'" href="{{bookService.urlService}}{{bookDetail.book_location}}" style="color: #fff;margin: 0 10px;" title="Empezar a leer" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=900,height=900,toolbar=1,resizable=0'); return false;" ><i class="material-icons" style="vertical-align: sub;">book</i> Empezar a leer</a>
+                                                    <a *ngIf="bookDetail.type == '2'" href="{{bookDetail.link}}" style="color: #fff;margin: 0 10px;" title="Empezar a leer" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=900,height=900,toolbar=1,resizable=0'); return false;" ><i class="material-icons" style="vertical-align: sub;">book</i> Empezar a leer</a>
+                                                </div>                                                
                                             </div> 
                                         </div>                           
                                     </div>
